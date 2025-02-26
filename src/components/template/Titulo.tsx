@@ -10,7 +10,7 @@ interface TituloProps {
 
 export function Titulo({ texto, pequeno, alinhar, className }: TituloProps) {
     return (
-        <h1 className={mergeClasses(`my-5 text-3xl px-0 font-bold w-full md:text-4xl xl:text-5xl`,
+        <h1 className={mergeClasses(`my-1 text-3xl px-0 font-bold w-full md:text-4xl xl:text-5xl`,
             {
                 "font-semibold text-2xl md:text-3xl xl:text-4xl": pequeno,
                 [`text-${alinhar}`]: alinhar
