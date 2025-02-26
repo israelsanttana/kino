@@ -11,9 +11,17 @@ interface CarrosselProps {
     slideAutomatico?: boolean;
 }
 
-function BotaoLateral(props: { esquerda?: boolean, direita?: boolean, children: React.ReactNode, onClick: () => void }) {
+function BotaoLateral(props:
+    {
+        esquerda?: boolean,
+        direita?: boolean,
+        children: React.ReactNode,
+        onClick: () => void,
+        onMouseEnter: () => void,
+        onMouseLeave: () => void,
+    }) {
     return (
-        <button onClick={props.onClick} className={mergeClasses(`group absolute top-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none`, {
+        <button onClick={props.onClick} onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave} className={mergeClasses(`group absolute top-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none`, {
             'left-0': props.esquerda,
             'right-0': props.direita,
         })}>
@@ -85,8 +93,8 @@ export function Carrossel({ children, slideAutomatico = false }: CarrosselProps)
     }
 
     return (
-        <Wrap>
-            <Container>
+        <Wrap className="relative">
+            <Container className="relative">
                 <Wrap>
                     <div className="relative rounded-lg mb-5"
                         ref={carrosselRef}
@@ -103,7 +111,7 @@ export function Carrossel({ children, slideAutomatico = false }: CarrosselProps)
                     <Flex className="absolute bottom-5 left-1/2 z-30 translate-x-1/2 gap-2">
                         {Array.from({ length: NUMERO_DE_ITENS }).map((_, i) => {
                             return (
-                                <button key={i} className={mergeClasses(
+                                <button onMouseEnter={pararSlide} onMouseLeave={iniciarSlide} key={i} className={mergeClasses(
                                     "h-3 w-3 rounded-full bg-gray-800",
                                     { "bg-gray-500": i === indiceAtual }
                                 )} onClick={() => setIndiceAtual(i)}></button>
@@ -111,20 +119,21 @@ export function Carrossel({ children, slideAutomatico = false }: CarrosselProps)
                         })}
                     </Flex>
                 </Wrap>
-                <Wrap className="absolute -bottom-0">
+                <Wrap className="absolute h-1 -bottom-0">
                     <div ref={animacaoRef} className={`rounded-lg h-full animate-[timer_4.8s_ease-in-out] bg-gray-800`}
                         onAnimationEnd={() => {
                             animacaoRef.current!.style.display = "none";
-                        }}></div>
+                        }}
+                    > </div>
                 </Wrap>
             </Container>
-            <BotaoLateral esquerda onClick={slideAnterior}>
+            <BotaoLateral esquerda onClick={slideAnterior} onMouseEnter={pararSlide} onMouseLeave={iniciarSlide}>
                 <CaretLeft size={20} />
                 <span className="hidden">
                     Anterior
                 </span>
             </BotaoLateral>
-            <BotaoLateral direita onClick={proximoSlide}>
+            <BotaoLateral direita onClick={proximoSlide} onMouseEnter={pararSlide} onMouseLeave={iniciarSlide}>
                 <CaretRight size={20} />
                 <span className="hidden">
                     Próximo
