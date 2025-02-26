@@ -1,24 +1,13 @@
-import Container from "@/components/template/Container";
+import { Carrossel } from "@/components/template/Carrossel";
+
+
 
 export default function Home() {
   return (
-    <Container className="bg-blue-200">
-      <p className="text-2xl bg-red-200  w-20 h-20">
-        teste
-      </p>
-      <p className="text-2xl bg-green-200 w-20 h-20">
-        teste
-      </p>
-      <p className="text-2xl bg-red-200 w-20 h-20">
-        teste
-      </p>
-      <p className="text-2xl bg-green-200 w-20 h-20">
-        teste
-      </p>
-      <p className="text-2xl bg-red-200 w-20 h-20">
-        teste
-      </p>
-
-    </Container>
+    <Carrossel slideAutomatico>
+      <p>teste 1</p>
+      <p>teste 2</p>
+      <p>teste 3</p>
+    </Carrossel>
   );
 }
