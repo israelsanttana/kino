@@ -111,7 +111,7 @@ export function Carrossel({ children, slideAutomatico = false }: CarrosselProps)
                     <Flex className="bottom-5 z-30 gap-2">
                         {Array.from({ length: NUMERO_DE_ITENS }).map((_, i) => {
                             return (
-                                <button onMouseEnter={pararSlide} onMouseLeave={iniciarSlide} key={i} className={mergeClasses(
+                                <button key={i} className={mergeClasses(
                                     "h-3 w-3 rounded-full bg-gray-800",
                                     { "bg-gray-500": i === indiceAtual }
                                 )} onClick={() => setIndiceAtual(i)}></button>
