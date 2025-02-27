@@ -1,6 +1,7 @@
 "use client"
 
 import { CardFilmeEmDestaque } from "@/components/filmes/CardFilmeEmDestaque";
+import { ListaDeFilmes } from "@/components/filmes/ListaDeFilmes";
 import { Carrossel } from "@/components/template/Carrossel";
 import Wrap from "@/components/template/Wrap";
 import { useMovieAPI } from "@/hooks/useMovieAPI";
@@ -19,6 +20,7 @@ export default function Filmes() {
                     <CardFilmeEmDestaque key={filme.id} filme={filme} />
                 ))}
             </Carrossel>
+            <ListaDeFilmes filmes={filmes} titulo="Ultimos filmes" />
         </Wrap>
     )
 }

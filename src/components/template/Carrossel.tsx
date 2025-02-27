@@ -108,7 +108,7 @@ export function Carrossel({ children, slideAutomatico = false }: CarrosselProps)
                             })
                         })}
                     </div>
-                    <Flex className="absolute bottom-5 left-1/2 z-30 translate-x-1/2 gap-2">
+                    <Flex className="bottom-5 z-30 gap-2">
                         {Array.from({ length: NUMERO_DE_ITENS }).map((_, i) => {
                             return (
                                 <button onMouseEnter={pararSlide} onMouseLeave={iniciarSlide} key={i} className={mergeClasses(

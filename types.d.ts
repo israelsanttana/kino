@@ -9,3 +9,7 @@ interface Filme {
     dataDeLancamento: Date;
 }
 
+type Genero = {
+    id: string;
+    nome: string;
+}

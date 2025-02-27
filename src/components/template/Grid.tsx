@@ -13,6 +13,7 @@ export default function Grid({ children, className, numCols, numRows, column }: 
         <div className={mergeClasses(
             `grid grid-rows-${numRows}`,
             { [`grid-cols-${numCols}`]: column },
+            className
         )} >{children}
         </div>
     )
