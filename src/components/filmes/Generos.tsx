@@ -6,13 +6,20 @@ import Flex from "../template/Flex";
 interface GenerosProps {
     idFilmes: string;
     grande?: boolean;
+    generosPadrao?: Genero[];
 }
 
-export function Generos({ idFilmes, grande }: GenerosProps) {
+export function Generos({ idFilmes, grande, generosPadrao }: GenerosProps) {
     const [generos, setGeneros] = useState<Genero[]>([]);
     const { getGeneroDoFilme } = useMovieAPI()
 
-    useEffect(() => { getGeneroDoFilme(idFilmes).then(setGeneros) }, [])
+    useEffect(() => {
+        if (generosPadrao && generosPadrao.length > 0) {
+            setGeneros(generosPadrao)
+            return;
+        }
+        getGeneroDoFilme(idFilmes).then(setGeneros)
+    }, [])
 
     return (
         <Flex className="flex-wrap justify-between">
